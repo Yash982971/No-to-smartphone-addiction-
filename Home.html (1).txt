@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindfulTech: Beat Smartphone Addiction</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-blue-50 text-gray-800 font-sans"> <!-- Navbar --> <header class="bg-white shadow">
+    <div class="container mx-auto p-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-blue-600">MindfulTech</h1>
+      <nav class="space-x-4">
+        <a href="#about" class="text-gray-700 hover:text-blue-600">About</a>
+        <a href="#assessment" class="text-gray-700 hover:text-blue-600">Self-Assessment</a>
+        <a href="#tips" class="text-gray-700 hover:text-blue-600">Tips & Tools</a>
+        <a href="#contact" class="text-gray-700 hover:text-blue-600">Contact</a>
+      </nav>
+    </div>
+  </header> <!-- Hero Section --> <section class="bg-blue-100 py-20 text-center">
+    <h2 class="text-4xl font-bold mb-4">Take Control of Your Screen Time</h2>
+    <p class="max-w-2xl mx-auto text-lg">Smartphone addiction can silently harm students' mental health. Learn to manage it and reclaim focus, sleep, and happiness.</p>
+    <a href="#assessment" class="mt-6 inline-block bg-blue-600 text-white px-6 py-2 rounded shadow hover:bg-blue-700">Start the Assessment</a>
+  </section> <!-- About Section --> <section id="about" class="py-16 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h3 class="text-3xl font-semibold mb-4">Why It Matters</h3>
+      <p class="text-gray-700 text-lg">Excessive smartphone use can lead to anxiety, depression, poor sleep, and reduced academic performance. Our goal is to raise awareness and guide students toward a healthier digital lifestyle.</p>
+    </div>
+  </section> <!-- Assessment Section --> <section id="assessment" class="bg-white py-16 px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h3 class="text-3xl font-semibold mb-6">Self-Assessment</h3>
+      <p class="text-gray-700 mb-4">Take a quick quiz to check how your phone usage may be affecting your mental well-being.</p>
+      <button class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">Coming Soon</button>
+    </div>
+  </section> <!-- Tips & Tools Section --> <section id="tips" class="bg-blue-50 py-16 px-4">
+    <div class="max-w-5xl mx-auto">
+      <h3 class="text-3xl font-semibold text-center mb-8">Tips & Tools</h3>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded shadow">
+          <h4 class="text-xl font-bold mb-2">Set Screen Time Limits</h4>
+          <p>Use your phone's digital wellbeing features to set daily limits for app usage.</p>
+        </div>
+        <div class="bg-white p-6 rounded shadow">
+          <h4 class="text-xl font-bold mb-2">Create Tech-Free Zones</h4>
+          <p>Keep your phone out of the bedroom and away from study areas to improve focus and sleep.</p>
+        </div>
+        <div class="bg-white p-6 rounded shadow">
+          <h4 class="text-xl font-bold mb-2">Use Focus Apps</h4>
+          <p>Apps like Forest, Focus Keeper, or Cold Turkey can help you stay mindful and present.</p>
+        </div>
+      </div>
+    </div>
+  </section> <!-- Contact Section --> <section id="contact" class="bg-white py-16 px-4">
+    <div class="max-w-2xl mx-auto text-center">
+      <h3 class="text-3xl font-semibold mb-4">Get in Touch</h3>
+      <p class="mb-6">Have questions, suggestions, or want to share your story? We'd love to hear from you.</p>
+      <form class="space-y-4">
+        <input type="text" placeholder="Your Name" class="w-full p-3 border rounded">
+        <input type="email" placeholder="Your Email" class="w-full p-3 border rounded">
+        <textarea placeholder="Your Message" class="w-full p-3 border rounded h-32"></textarea>
+        <button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Send Message</button>
+      </form>
+    </div>
+  </section> <!-- Footer --> <footer class="bg-blue-100 text-center py-4 mt-8">
+    <p class="text-gray-600">&copy; 2025 MindfulTech. All rights reserved.</p>
+  </footer></body>
+</html>
