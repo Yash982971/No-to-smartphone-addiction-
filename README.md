@@ -4,15 +4,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MindfulTech: Beat Smartphone Addiction</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script>
+    function calculateScore() {
+      const answers = document.querySelectorAll('input[type="radio"]:checked');
+      let score = 0;
+      answers.forEach(a => score += parseInt(a.value));
+      document.getElementById("quiz-result").innerText = score > 2
+        ? "Your screen time might be affecting your mental health. Consider reducing it."
+        : "Great! Your smartphone use seems well managed.";
+    }let timer;
+function startTimer(duration) {
+  clearInterval(timer);
+  let countdown = duration;
+  const display = document.getElementById('timer');
+  timer = setInterval(() => {
+    const minutes = Math.floor(countdown / 60);
+    const seconds = countdown % 60;
+    display.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    if (--countdown < 0) clearInterval(timer);
+  }, 1000);
+}
+
+  </script>
 </head>
 <body class="bg-blue-50 text-gray-800 font-sans">  <!-- Navbar -->  <header class="bg-white shadow">
     <div class="container mx-auto p-4 flex justify-between items-center">
       <h1 class="text-2xl font-bold text-blue-600">MindfulTech</h1>
       <nav class="space-x-4">
-        <a href="#about" class="text-gray-700 hover:text-blue-600">About</a>
-        <a href="#assessment" class="text-gray-700 hover:text-blue-600">Self-Assessment</a>
-        <a href="#tips" class="text-gray-700 hover:text-blue-600">Tips & Tools</a>
-        <a href="#contact" class="text-gray-700 hover:text-blue-600">Contact</a>
+        <a href="#about" class="hover:text-blue-600">About</a>
+        <a href="#assessment" class="hover:text-blue-600">Self-Assessment</a>
+        <a href="#tools" class="hover:text-blue-600">Tips & Tools</a>
+        <a href="#blog" class="hover:text-blue-600">Blog</a>
+        <a href="#contact" class="hover:text-blue-600">Contact</a>
       </nav>
     </div>
   </header>  <!-- Hero Section -->  <section class="bg-blue-100 py-20 text-center">
@@ -22,36 +45,57 @@
   </section>  <!-- About Section -->  <section id="about" class="py-16 px-4">
     <div class="max-w-4xl mx-auto text-center">
       <h3 class="text-3xl font-semibold mb-4">Why It Matters</h3>
-      <p class="text-gray-700 text-lg">Excessive smartphone use can lead to anxiety, depression, poor sleep, and reduced academic performance. Our goal is to raise awareness and guide students toward a healthier digital lifestyle.</p>
+      <p>Excessive smartphone use can lead to anxiety, depression, poor sleep, and reduced academic performance. We guide students toward a healthier digital lifestyle.</p>
     </div>
-  </section>  <!-- Assessment Section -->  <section id="assessment" class="bg-white py-16 px-4">
-    <div class="max-w-3xl mx-auto text-center">
-      <h3 class="text-3xl font-semibold mb-6">Self-Assessment</h3>
-      <p class="text-gray-700 mb-4">Take a quick quiz to check how your phone usage may be affecting your mental well-being.</p>
-      <button class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">Coming Soon</button>
+  </section>  <!-- Self-Assessment Quiz -->  <section id="assessment" class="bg-white py-16 px-4">
+    <div class="max-w-3xl mx-auto">
+      <h3 class="text-3xl font-semibold text-center mb-6">Self-Assessment Quiz</h3>
+      <form class="space-y-4">
+        <div>
+          <p>1. Do you check your phone first thing in the morning?</p>
+          <label><input type="radio" name="q1" value="1"> Yes</label>
+          <label><input type="radio" name="q1" value="0"> No</label>
+        </div>
+        <div>
+          <p>2. Do you feel anxious when your phone is not with you?</p>
+          <label><input type="radio" name="q2" value="1"> Yes</label>
+          <label><input type="radio" name="q2" value="0"> No</label>
+        </div>
+        <div>
+          <p>3. Do you find it hard to focus without checking your phone?</p>
+          <label><input type="radio" name="q3" value="1"> Yes</label>
+          <label><input type="radio" name="q3" value="0"> No</label>
+        </div>
+        <button type="button" onclick="calculateScore()" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">Get Result</button>
+        <p id="quiz-result" class="mt-4 font-semibold"></p>
+      </form>
     </div>
-  </section>  <!-- Tips & Tools Section -->  <section id="tips" class="bg-blue-50 py-16 px-4">
+  </section>  <!-- Tools Section -->  <section id="tools" class="bg-blue-50 py-16 px-4">
     <div class="max-w-5xl mx-auto">
-      <h3 class="text-3xl font-semibold text-center mb-8">Tips & Tools</h3>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-white p-6 rounded shadow">
-          <h4 class="text-xl font-bold mb-2">Set Screen Time Limits</h4>
-          <p>Use your phone's digital wellbeing features to set daily limits for app usage.</p>
+      <h3 class="text-3xl font-semibold text-center mb-8">Focus Timer</h3>
+      <div class="text-center">
+        <p class="mb-4">Use this 25-minute Pomodoro timer to stay productive.</p>
+        <button onclick="startTimer(1500)" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Start 25-Min Timer</button>
+        <p id="timer" class="text-2xl mt-4">25:00</p>
+      </div>
+    </div>
+  </section>  <!-- Blog Section -->  <section id="blog" class="bg-white py-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <h3 class="text-3xl font-semibold text-center mb-6">Student Stories & Tips</h3>
+      <div class="space-y-6">
+        <div class="bg-blue-100 p-4 rounded shadow">
+          <h4 class="text-xl font-bold">How I Regained Focus</h4>
+          <p>“Reducing phone use helped me sleep better and improve my grades.” – Aarti, 19</p>
         </div>
-        <div class="bg-white p-6 rounded shadow">
-          <h4 class="text-xl font-bold mb-2">Create Tech-Free Zones</h4>
-          <p>Keep your phone out of the bedroom and away from study areas to improve focus and sleep.</p>
-        </div>
-        <div class="bg-white p-6 rounded shadow">
-          <h4 class="text-xl font-bold mb-2">Use Focus Apps</h4>
-          <p>Apps like Forest, Focus Keeper, or Cold Turkey can help you stay mindful and present.</p>
+        <div class="bg-blue-100 p-4 rounded shadow">
+          <h4 class="text-xl font-bold">Apps That Actually Help</h4>
+          <p>Forest and Focus To-Do helped me study more mindfully and avoid distractions.</p>
         </div>
       </div>
     </div>
-  </section>  <!-- Contact Section -->  <section id="contact" class="bg-white py-16 px-4">
+  </section>  <!-- Contact Section -->  <section id="contact" class="py-16 px-4">
     <div class="max-w-2xl mx-auto text-center">
       <h3 class="text-3xl font-semibold mb-4">Get in Touch</h3>
-      <p class="mb-6">Have questions, suggestions, or want to share your story? We'd love to hear from you.</p>
       <form class="space-y-4">
         <input type="text" placeholder="Your Name" class="w-full p-3 border rounded">
         <input type="email" placeholder="Your Email" class="w-full p-3 border rounded">
@@ -59,7 +103,115 @@
         <button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Send Message</button>
       </form>
     </div>
-  </section>  <!-- Footer -->  <footer class="bg-blue-100 text-center py-4 mt-8">
+  </section>  <!-- Footer -->  <footer class="bg-blue-100 text-center py-4">
+    <p class="text-gray-600">&copy; 2025 MindfulTech. All rights reserved.</p>
+  </footer></body>
+</html><!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindfulTech: Beat Smartphone Addiction</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script>
+    function calculateScore() {
+      const answers = document.querySelectorAll('input[type="radio"]:checked');
+      let score = 0;
+      answers.forEach(a => score += parseInt(a.value));
+      document.getElementById("quiz-result").innerText = score > 2
+        ? "Your screen time might be affecting your mental health. Consider reducing it."
+        : "Great! Your smartphone use seems well managed.";
+    }let timer;
+function startTimer(duration) {
+  clearInterval(timer);
+  let countdown = duration;
+  const display = document.getElementById('timer');
+  timer = setInterval(() => {
+    const minutes = Math.floor(countdown / 60);
+    const seconds = countdown % 60;
+    display.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    if (--countdown < 0) clearInterval(timer);
+  }, 1000);
+}
+
+  </script>
+</head>
+<body class="bg-blue-50 text-gray-800 font-sans">  <!-- Navbar -->  <header class="bg-white shadow">
+    <div class="container mx-auto p-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-blue-600">MindfulTech</h1>
+      <nav class="space-x-4">
+        <a href="#about" class="hover:text-blue-600">About</a>
+        <a href="#assessment" class="hover:text-blue-600">Self-Assessment</a>
+        <a href="#tools" class="hover:text-blue-600">Tips & Tools</a>
+        <a href="#blog" class="hover:text-blue-600">Blog</a>
+        <a href="#contact" class="hover:text-blue-600">Contact</a>
+      </nav>
+    </div>
+  </header>  <!-- Hero Section -->  <section class="bg-blue-100 py-20 text-center">
+    <h2 class="text-4xl font-bold mb-4">Take Control of Your Screen Time</h2>
+    <p class="max-w-2xl mx-auto text-lg">Smartphone addiction can silently harm students' mental health. Learn to manage it and reclaim focus, sleep, and happiness.</p>
+    <a href="#assessment" class="mt-6 inline-block bg-blue-600 text-white px-6 py-2 rounded shadow hover:bg-blue-700">Start the Assessment</a>
+  </section>  <!-- About Section -->  <section id="about" class="py-16 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h3 class="text-3xl font-semibold mb-4">Why It Matters</h3>
+      <p>Excessive smartphone use can lead to anxiety, depression, poor sleep, and reduced academic performance. We guide students toward a healthier digital lifestyle.</p>
+    </div>
+  </section>  <!-- Self-Assessment Quiz -->  <section id="assessment" class="bg-white py-16 px-4">
+    <div class="max-w-3xl mx-auto">
+      <h3 class="text-3xl font-semibold text-center mb-6">Self-Assessment Quiz</h3>
+      <form class="space-y-4">
+        <div>
+          <p>1. Do you check your phone first thing in the morning?</p>
+          <label><input type="radio" name="q1" value="1"> Yes</label>
+          <label><input type="radio" name="q1" value="0"> No</label>
+        </div>
+        <div>
+          <p>2. Do you feel anxious when your phone is not with you?</p>
+          <label><input type="radio" name="q2" value="1"> Yes</label>
+          <label><input type="radio" name="q2" value="0"> No</label>
+        </div>
+        <div>
+          <p>3. Do you find it hard to focus without checking your phone?</p>
+          <label><input type="radio" name="q3" value="1"> Yes</label>
+          <label><input type="radio" name="q3" value="0"> No</label>
+        </div>
+        <button type="button" onclick="calculateScore()" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">Get Result</button>
+        <p id="quiz-result" class="mt-4 font-semibold"></p>
+      </form>
+    </div>
+  </section>  <!-- Tools Section -->  <section id="tools" class="bg-blue-50 py-16 px-4">
+    <div class="max-w-5xl mx-auto">
+      <h3 class="text-3xl font-semibold text-center mb-8">Focus Timer</h3>
+      <div class="text-center">
+        <p class="mb-4">Use this 25-minute Pomodoro timer to stay productive.</p>
+        <button onclick="startTimer(1500)" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Start 25-Min Timer</button>
+        <p id="timer" class="text-2xl mt-4">25:00</p>
+      </div>
+    </div>
+  </section>  <!-- Blog Section -->  <section id="blog" class="bg-white py-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <h3 class="text-3xl font-semibold text-center mb-6">Student Stories & Tips</h3>
+      <div class="space-y-6">
+        <div class="bg-blue-100 p-4 rounded shadow">
+          <h4 class="text-xl font-bold">How I Regained Focus</h4>
+          <p>“Reducing phone use helped me sleep better and improve my grades.” – Aarti, 19</p>
+        </div>
+        <div class="bg-blue-100 p-4 rounded shadow">
+          <h4 class="text-xl font-bold">Apps That Actually Help</h4>
+          <p>Forest and Focus To-Do helped me study more mindfully and avoid distractions.</p>
+        </div>
+      </div>
+    </div>
+  </section>  <!-- Contact Section -->  <section id="contact" class="py-16 px-4">
+    <div class="max-w-2xl mx-auto text-center">
+      <h3 class="text-3xl font-semibold mb-4">Get in Touch</h3>
+      <form class="space-y-4">
+        <input type="text" placeholder="Your Name" class="w-full p-3 border rounded">
+        <input type="email" placeholder="Your Email" class="w-full p-3 border rounded">
+        <textarea placeholder="Your Message" class="w-full p-3 border rounded h-32"></textarea>
+        <button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Send Message</button>
+      </form>
+    </div>
+  </section>  <!-- Footer -->  <footer class="bg-blue-100 text-center py-4">
     <p class="text-gray-600">&copy; 2025 MindfulTech. All rights reserved.</p>
   </footer></body>
 </html>
